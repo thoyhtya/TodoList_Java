@@ -52,7 +52,7 @@ public class TodoList {
     }
     
 	/** 
-	* Creates all UI elements:
+	* Creates all UI elements and their event listeners:
 	* Info text
 	* Table for displaying actual tasks in flexible manner
 	* Button to create new tasks
@@ -65,11 +65,11 @@ public class TodoList {
     	//use boxlayout for placing elements vertically
     	pane.setLayout(new BoxLayout(pane, BoxLayout.PAGE_AXIS));   
     	
-    	//add infotext
+    	//add info text
     	JLabel infoLabel = new JLabel("Double click any cell to edit");
     	pane.add(infoLabel);
     	
-    	//Init table view
+    	//Initialize table view
     	//set columns
     	//populate table with some initial data for demo purposes
     	String[] columnNames = {"Description", "Priority", "Deadline", "Status"};
@@ -87,7 +87,7 @@ public class TodoList {
         table.getModel().addTableModelListener(new TableModelListener() {
             @Override
             public void tableChanged(TableModelEvent e) {
-              // TODO save stuff somewhere when they are changed
+              // TODO write changes to file when updated
             	System.out.println("tableChanged");
             	
             	int row = e.getFirstRow();
@@ -136,7 +136,6 @@ public class TodoList {
             public void actionPerformed(ActionEvent e) {
             	//TODO delete selected task
                 System.out.println("Delete task pressed");
-                int column = e.getColumn();
             }
         });
         pane.add(deleteButton);
